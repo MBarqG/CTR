@@ -1,7 +1,26 @@
 import java.io.*;
 
 public class CTR {
+   /*bakeer work*/
+   public static String encryption1(String S){
+      int k1[]=new int[]{4,1,3,2,5,7,6,8 };
+   String E="";
+      for (int i = 0; i < S.length(); i++) {
+         E+=S.charAt((k1[i]-1));
+      }
+      return E;
+   }
+   public static String encryption2(String S){
+      int k2[]=new int[]{2,1,3,6,7,4,8,5};
+      S=encryption1(S);
+      String E="";
+      for (int i = 0; i < S.length(); i++) {
+         E+=S.charAt((k2[i]-1));
+      }
+      return E;
+   }
 
+   /*barq work*/
    //turn from 8 bit to char
    public static char from8bitToChar(String s){
    int value=0;
@@ -12,7 +31,6 @@ public class CTR {
       }
       power*=2;
     }
-
     return (char)value;
    }
 
@@ -51,14 +69,13 @@ public class CTR {
    }
 
 
-
    public static void main(String[] args) throws FileNotFoundException {
       int startofcounter = 69; //key the start of the counter
-      String word ="this is a long line of text to test the change of time";
+      String word ="B";
       String cypher ="";
       long start = System.currentTimeMillis();
       for (int i = 0; i < word.length(); i++) {
-         String v = XOR(CTRStart((int)word.charAt(i)), CTRStart(startofcounter));
+         String v = XOR(CTRStart((int)word.charAt(i)), encryption2(CTRStart(startofcounter)));
          startofcounter++;
          cypher += from8bitToChar(v);
       }
