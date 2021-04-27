@@ -2,6 +2,7 @@ import java.io.*;
 
 public class CTR {
    /*bakeer work*/
+   //encrypt the block using the first key
    public static String encryption1(String S){
       int k1[]=new int[]{4,1,3,2,5,7,6,8 };
    String E="";
@@ -10,6 +11,7 @@ public class CTR {
       }
       return E;
    }
+   //encrypt the block using the secend key
    public static String encryption2(String S){
       int k2[]=new int[]{2,1,3,6,7,4,8,5};
       S=encryption1(S);
@@ -71,7 +73,7 @@ public class CTR {
 
    public static void main(String[] args) throws FileNotFoundException {
       int startofcounter = 69; //key the start of the counter
-      String word ="B";
+      String word ="looooool";
       String cypher ="";
       long start = System.currentTimeMillis();
       for (int i = 0; i < word.length(); i++) {
