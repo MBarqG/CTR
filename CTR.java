@@ -74,6 +74,7 @@ public class CTR {
    public static void main(String[] args) throws FileNotFoundException {
       int startofcounter = 69; //key the start of the counter
       String word ="looooool assassination";
+      //word = "bsqjhzxa/|l7''%% =*,(;";
       String cypher ="";
       long start = System.currentTimeMillis();
       for (int i = 0; i < word.length(); i++) {
