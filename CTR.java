@@ -77,6 +77,9 @@ public class CTR {
       String cypher ="";
       long start = System.currentTimeMillis();
       for (int i = 0; i < word.length(); i++) {
+         if (startofcounter >= 256) {
+            startofcounter=0;
+         }
          String v = XOR(CTRStart((int)word.charAt(i)), encryption2(CTRStart(startofcounter)));
          startofcounter++;
          cypher += from8bitToChar(v);
