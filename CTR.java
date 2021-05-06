@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class CTR {
    /*bakeer work*/
@@ -58,6 +59,9 @@ public class CTR {
 
 // turn the counter to binary form string from 8 bit
    public static String CTRStart(int dec){
+      if (dec >=256){
+         dec=dec%255;
+       }
       String result= "00000000";
       int i=result.length()-1;
       while(dec!=0)
@@ -73,12 +77,16 @@ public class CTR {
 
    public static void main(String[] args) throws FileNotFoundException {
       int startofcounter = 69; //key the start of the counter
-      String word ="looooool assassination";
-      //word = "bsqjhzxa/|l7''%% =*,(;";
+      String word=new String();
+      String reset="reset";
+      Scanner in = new Scanner(System.in);
+      while (word != "") {
+         word = in.nextLine();
+         if (word.equals(reset)){startofcounter = 69; continue;}
       String cypher ="";
       long start = System.currentTimeMillis();
       for (int i = 0; i < word.length(); i++) {
-         if (startofcounter >= 256) {
+         if (startofcounter >= 255) {
             startofcounter=0;
          }
          String v = XOR(CTRStart((int)word.charAt(i)), encryption2(CTRStart(startofcounter)));
@@ -89,5 +97,6 @@ public class CTR {
       long elapsedTime = end - start;
       System.out.println("cypher txt ="+cypher);
       System.out.println("time to run the enctyption = "+ elapsedTime +" Milliseconds ,side of input = " + (byte)word.length()*8 +" bits");
+      }
    }
 }
